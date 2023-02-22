@@ -73,11 +73,13 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $products = null;
-        if($request->q === 'App')
+        $query_to_check = $request->q;
+        
+        if($query_to_check)
         {
-            $products = Product::where('name','=','Apple iPhone')->orWhere('name','=','Mobile application')->get();
-            // dd($products);
+            $products = Product::where('name','LIKE','%'.$query_to_check.'%')->orWhere('type','LIKE','%'.$query_to_check.'%')->orWhere('description','LIKE','%'.$query_to_check.'%')->get();
         }
+        
         return view('view_search',
         [
             'products' => $products,   

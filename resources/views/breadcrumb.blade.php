@@ -1,18 +1,30 @@
-<head>
-    <link rel="stylesheet" href="{{asset('/css/breadcrumb.css')}}">
-</head>
-
 <div class="container d-flex justify-content-center">
-    <nav aria-label="breadcrumb " class="first  d-md-flex" >
-         <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">
-            <li class="breadcrumb-item "><a class="black-text active-2" href="/products"><span >Tous les produits</span></a><img class="ml-md-3 ml-1" src="https://img.icons8.com/metro/50/000000/chevron-right.png " width="20" height="20"></li>
-            <li class="breadcrumb-item "><a class="black-text active-2  " href="/product/create"><span >Ajouter produit</span></a><img class="ml-md-3 ml-1" src="https://img.icons8.com/metro/50/000000/chevron-right.png " width="20" height="20"> </li>
-            <li class="breadcrumb-item "><form class="d-flex" action="/product/search" method="POST">
-        <input class="form-control me-2" type="search" placeholder="Search" name="q" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit"><span>Search</span></button>
-        @csrf
-      </form> </li>
-            
-        </ol>
-    </nav>
+    <section class=" p-4 mb-4 d-flex align-items-center flex-column">
+
+
+        <nav class="navbar navbar-expand-lg  rounded-pill nav-breadcrumb">
+
+            <div class="container-fluid">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('products*')||request()->is('/') ) ? 'active' : '' }}" aria-current="page" href="/products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (request()->is('product/create')) ? 'active' : '' }}" href="/product/create">Add</a>
+                    </li>
+
+                    <div class="input-group ps-5">
+                        <div class="form-outline">
+                            <form action="/product/search" method="POST">
+                                <input type="search" id="search-breadcrumb" class="form-control rounded-pill" name="q" placeholder="Search">
+                                @csrf
+                            </form>
+
+                        </div>
+
+                    </div>
+            </div>
+        </nav>
+    </section>
 </div>
