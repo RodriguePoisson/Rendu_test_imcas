@@ -33,7 +33,7 @@
                   <div class="mb-3">
                     <textarea id="description" class="@error('description') is-invalid @enderror form-control" type="text" name="description"  placeHolder="Description" rows="5" cols="33" >{{ old('description') }}</textarea>
                     
-                    @error('type')
+                    @error('description')
                     <div class="alert alert-danger form-control">{{ $message }}</div>
                     @enderror
                   </div>
